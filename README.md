@@ -1,6 +1,11 @@
 # Frequency Analysis of Words
 
-[TODO. There will be project description]
+You give this script txt file - it shows 10 most frequent words in it.
+
+Example:
+```bash
+python lang_frequency kapitanskaya_dochka.txt
+```
 
 # Project Goals
 
