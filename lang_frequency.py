@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
     file_content = load_data(path)
     if file_content:
-        frequent_words = get_most_frequent_words(file_content, 10)
+        frequent_words = get_most_frequent_words(file_content)
         print('\nMost frequent words in the file:')
         for elt in frequent_words:
             print('{}: {}'.format(elt[0], elt[1]))
