@@ -3,6 +3,7 @@ import sys
 import string
 import operator
 
+
 def load_data(filepath):
     if not os.path.exists(filepath):
         return None
@@ -20,7 +21,7 @@ def count_words(word_list):
     return word_count
 
 
-def get_most_frequent_words(text):
+def get_most_frequent_words(text, count=10):
     punctuation = string.punctuation + '—«»…'
     stripped_text = ''.join([char.lower() for char in file_content
                              if char not in punctuation])
@@ -28,10 +29,10 @@ def get_most_frequent_words(text):
     word_count = count_words(words)
 
     sorted_words = sorted(word_count.items(),
-                          key = operator.itemgetter(1),
-                          reverse = True)
-    
-    return sorted_words[:1000]
+                          key=operator.itemgetter(1),
+                          reverse=True)
+
+    return sorted_words[:count]
 
 
 if __name__ == '__main__':
@@ -40,11 +41,12 @@ if __name__ == '__main__':
         path = os.path.join(current_directory, sys.argv[1])
     except IndexError:
         sys.exit('Need to specify text file to count words in')
-        
+
     file_content = load_data(path)
     if file_content:
-        frequency_dict = get_most_frequent_words(file_content)
-        for elt in frequency_dict:
-            print(elt)
+        frequent_words = get_most_frequent_words(file_content, 10)
+        print('\nMost frequent words in the file:')
+        for elt in frequent_words:
+            print('{}: {}'.format(elt[0], elt[1]))
     else:
         print('Wrong filepath')
