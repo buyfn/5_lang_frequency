@@ -18,7 +18,6 @@ def get_most_frequent_words(text, count=10):
                              if char not in punctuation])
     words = stripped_text.split()
     word_count = collections.Counter(words)
-
     sorted_words = sorted(word_count.items(),
                           key=operator.itemgetter(1),
                           reverse=True)
@@ -40,7 +39,7 @@ if __name__ == '__main__':
 
     text = load_text(path)
     if text:
-        frequent_words = get_most_frequent_words(text, 100)
+        frequent_words = get_most_frequent_words(text)
         print('\nMost frequent words in the file:')
         print_frequent_words(frequent_words)
     else:
