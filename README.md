@@ -3,7 +3,7 @@
 You give this script txt file - it shows 10 most frequent words in it.
 
 Example:
-```bash
+```
 python lang_frequency kapitanskaya_dochka.txt
 
 Most frequent words in the file:
