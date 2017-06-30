@@ -17,15 +17,12 @@ def get_most_frequent_words(text, count=10):
     stripped_text = ''.join([char.lower() for char in text
                              if char not in punctuation])
     words = stripped_text.split()
-    word_count = collections.Counter(words)
-    sorted_words = sorted(word_count.items(),
-                          key=operator.itemgetter(1),
-                          reverse=True)
+    most_common_words = collections.Counter(words).most_common(count)
 
-    return sorted_words[:count]
+    return most_common_words
 
 
-def print_frequent_words(words_dict):
+def print_common_words(words_dict):
     for word in words_dict:
         print('{}: {}'.format(word[0], word[1]))
 
@@ -39,8 +36,8 @@ if __name__ == '__main__':
 
     text = load_text(path)
     if text:
-        frequent_words = get_most_frequent_words(text)
+        common_words = get_most_frequent_words(text)
         print('\nMost frequent words in the file:')
-        print_frequent_words(frequent_words)
+        print_common_words(common_words)
     else:
         print('Wrong filepath')
